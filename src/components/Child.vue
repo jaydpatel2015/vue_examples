@@ -1,30 +1,35 @@
 <template>
     <div>
-        <h1>Child component</h1>   
-        <h2>{{msg}}</h2>
-        <h3>Object passed to child component</h3>
-        <h3>Name: {{info.name}}</h3>
-        <h3>Email: {{info.email}}</h3>
-        <button v-on:click="sendData()">Get Data from Parents</button>
+        <div class="cart">
+            <header>
+                <slot name="header"></slot>
+            </header>
+            <main>
+                <slot name="main"></slot>
+            </main>
+            <footer>
+                <slot name="footer"></slot>
+            </footer>
+        </div>
     </div>
 </template>
 
 <script>
-    export default {
-        name:'Child',
-        props:{
-            msg:String,
-            info:Object,
-            sendData:Function
-        },
+export default {
+    name:"Child",
+    props:{
+        data:String
+    }
 }
 </script>
 
 <style scoped>
-    h1{
-        color: blue;
-    }
-    h2{
-        color:red;
+    .cart{
+        margin-top: 10px;
+        margin-right: 10px;
+        width: 200px;
+        border: 1px solid black;
+        text-align: center;
+        padding: 10px;
     }
 </style>
