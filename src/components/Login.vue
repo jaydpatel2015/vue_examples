@@ -1,21 +1,19 @@
 <template>
     <div>
-        <h1>POST API</h1>
+        <h1>Login Page</h1>
     </div>
 </template>
 
 <script>
 export default {
-    name:"Home",
-   
+    name:"Login",
 }
 </script>
 
 <style scoped>
     h1{
-        color:blue;
+        color:red;
     }
-        
 </style>
 
 
