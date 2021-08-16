@@ -1,66 +1,60 @@
 <template>
     <div>
-        <h1>Multiple Slots Demo</h1>
-        <div class="box">
-            <Child>
-                <template v-slot:header>
-                    <img src="../assets/t-shirt.jpg" alt="">
-                    <h1>T-Shirt</h1>
-                </template>
-                <template v-slot:main>
-                    <h1>INR 799</h1>
-                </template>
-                <template v-slot:footer>
-                    <button>Buy Now</button>
-                </template>
-            </Child>
-            <Child>
-                <template v-slot:header>
-                    <img src="../assets/t-shirt_2.jpg" alt="">
-                    <h1>T-Shirt</h1>
-                </template>
-                <template v-slot:main>
-                    <h1>INR 599</h1>
-                </template>
-                <template v-slot:footer>
-                    <button>Buy Now</button>
-                </template>
-            </Child>
-            <Child>
-                <template v-slot:header>
-                    <img src="../assets/t-shirt_3.jpg" alt="">
-                    <h1>T-Shirt</h1>
-                </template>
-                <template v-slot:main>
-                    <h1>INR 699</h1>
-                </template>
-                <template v-slot:footer>
-                    <button>Buy Now</button>
-                </template>
-            </Child>
-        </div>
+        <h1>Life Cycle Method Demo</h1>
+        <h2>beforeCreate & Created Example</h2>
+        <h2>beforeMount & Mounted Example</h2>
+        <h2>{{name}}</h2>
+        <h2>beforeUpdate & Updated Example</h2>
+        <h2 ref="count">{{counter}}</h2>
+        <button v-on:click="counter=counter+1">Update Count</button>
+        <h2>beforeUnmounted & unmounted Example</h2>
+        <button v-on:click="show=!show">Click for Toggle</button>
+        <User v-if="show" />
     </div>
 </template>
 
 <script>
-import Child from './Child.vue'
+import User from './User.vue';
 export default {
     name:"Home",
     components:{
-        Child
+        User
+    },
+    data(){
+        return{
+            name:"Jay",
+            counter:0,
+            show:true
+        }
+    },
+    beforeCreate(){
+        console.log("before create called");
+    },
+    created(){
+        console.log("Created called");   
+    },
+    beforeMount(){
+        console.log("before Mounted",this.$el)
+    },
+    mounted(){
+        console.log("Mounted",this.$el)
+    },
+    beforeUpdate(){
+        console.log("before Update",this.$refs['count'].textContent);
+    },
+    updated(){
+        console.log("Updated",this.counter);
     }
+    
+
 }
 </script>
 
 <style scoped>
     h1{
-        color:orange
+        color:#fd8700
     }
-    img{
-        height: 200px;
-        width:200px;
-    }
-    .box{
-        display: flex;
+    h2{
+        color:#5cd1e6
     }
 </style>

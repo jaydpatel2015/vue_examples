@@ -1,17 +1,25 @@
 <template>
     <div>
-        <h3>Peter</h3>
-        <h3>Bruce</h3>
-        <h3>Clark</h3>
-        <h3>{{data}}</h3>
+        <h1>User Component</h1>
+        <h1 ref="user"></h1>
     </div>
 </template>
+
 <script>
 export default {
     name:"User",
-    props:{
-        data:String
+    beforeUnmount()
+    {
+        console.log("before unmount",this.$refs['user'])
+    },
+    unmounted(){
+        console.log("unmounted",this.$refs['user']);
     }
-
 }
 </script>
+
+<style scoped>
+    h1{
+        color:blue
+    }
+</style>
